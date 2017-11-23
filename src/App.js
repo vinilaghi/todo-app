@@ -22,11 +22,13 @@ class App extends Component {
     this.setState({ todos: newTodo });
   };
   addItem = text => {
+    if (text.trim() != ""){
     let newList = [
       ...this.state.todos,
       { action: text, id: nextTodoId++, done: false }
     ];
     this.setState({ todos: newList });
+  };
   };
   toggleDone = id => {
     let newTodo = this.state.todos.map(item => {

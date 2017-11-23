@@ -22,7 +22,7 @@ class App extends Component {
     this.setState({ todos: newTodo });
   };
   addItem = text => {
-    if (text.trim() != ""){
+    if (text.trim() !== ""){
     let newList = [
       ...this.state.todos,
       { action: text, id: nextTodoId++, done: false }

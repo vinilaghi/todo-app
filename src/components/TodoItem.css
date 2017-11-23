@@ -1,0 +1,49 @@
+.Delete {
+    background-color: rgb(247, 112, 112);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 2px 4px;
+    margin-left: 10px;
+    
+    
+
+}
+.Uncheck {
+    background-color: lightgrey;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    padding: 2px 4px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: flex-end; 
+    
+   
+   
+
+}
+.Check {
+    background-color: lightgreen;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    
+
+}
+.DivItem{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Action {
+    font-size: 20px;
+}

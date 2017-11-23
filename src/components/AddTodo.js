@@ -1,10 +1,11 @@
 import React from "react";
+import "./AddTodo.css"
 
 class AddTodo extends React.Component {
   handleKeyPress(target) {
     if (target.charCode === 13) {
      
-      if (this.input.value.trim() != ""){
+      if (this.input.value.trim() !== ""){
       this.props.addItem(this.input.value);
       }
       this.input.value = "";
@@ -16,19 +17,19 @@ class AddTodo extends React.Component {
     return (
       <div>
         
-        <input
+        <input className="Input"
           ref={text => {
             this.input = text;
           }}
           onKeyPress={target => this.handleKeyPress(target)}
         />
-        <button
+        <button className="Button"
           onClick={() => {
             addItem(this.input.value);
             this.input.value = "";
           }}
         >
-          Add
+          <b>Add</b>
         </button>
        
       </div>

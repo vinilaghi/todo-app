@@ -2,6 +2,7 @@ import React from "react";
 import FaTrash from "react-icons/lib/fa/trash";
 import FaSquareO from 'react-icons/lib/fa/square-o';
 import FaCheckSquareO from 'react-icons/lib/fa/check-square-o';
+import "./TodoItem.css";
 
 class TodoItem extends React.Component {
  
@@ -9,22 +10,33 @@ class TodoItem extends React.Component {
     const { deleteItem, action, id, done, toggleDone } = this.props;
     const check = (done) => {
         if (done === false) {
-            return <FaSquareO />;
+            return <button className="Uncheck"><FaSquareO /></button>;
            
             
                     }
                     else { 
-                        return <FaCheckSquareO />;
+                        return <button className="Check"><FaCheckSquareO /></button>;
                         
                     }
                 }
+                // const color = (done) => {
+                //   if (done === false) {
+                //     return ""
+                //     console.log(color);
+                //   }
+                //   else{
+                //     return ""
+                //     console.log(color);
+                //   }
+                // }
     return (
-      <div style={{ display: "flex", margin: "0" }}>
-        <div onClick={x => deleteItem(id)}>
+      <div style={{ display: "flex", marginBottom: "5px"}}>
+        
+        <span className="Action"> {action} </span>
+      <div className="DivItem" onClick={x => toggleDone(id)}>{check(done)}</div>
+      <button className="Delete" onClick={x => deleteItem(id)}>
           <FaTrash />
-        </div>
-        <span> {action} </span>
-      <div onClick={x => toggleDone(id)}>{check(done)}</div>
+        </button>
         
       </div>
     );

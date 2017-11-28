@@ -1,5 +1,5 @@
 import React from "react";
-import "./AddTodo.css"
+import "./addTodo.css"
 
 class AddTodo extends React.Component {
   handleKeyPress(target) {
@@ -17,7 +17,7 @@ class AddTodo extends React.Component {
     return (
       <div>
         
-        <input className="Input"
+        <input className="Input" type="text"
           ref={text => {
             this.input = text;
           }}

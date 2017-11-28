@@ -32,7 +32,7 @@ class TodoItem extends React.Component {
     return (
       <div style={{ display: "flex", marginBottom: "5px"}}>
         
-        <span className="Action"> {action} </span>
+        <span className="Action" onClick={x => toggleDone(id)}> {action} </span>
       <div className="DivItem" onClick={x => toggleDone(id)}>{check(done)}</div>
       <button className="Delete" onClick={x => deleteItem(id)}>
           <FaTrash />

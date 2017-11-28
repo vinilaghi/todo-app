@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./images/usalia.png";
+import logo from "./logo.svg";
 import "./App.css";
 import AddTodo from "./components/AddTodo.js";
 import TodoList from "./components/TodoList.js";
@@ -50,7 +50,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">To do app!</h1>
         </header>
-        <p className="App-intro">Do your work, plip!</p>
+        <p className="App-intro">Let's get started!</p>
         <AddTodo addItem={this.addItem} />
         <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone} />
       </div>

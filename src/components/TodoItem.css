@@ -1,3 +1,11 @@
+  .DivItem {
+    display: flex;
+    margin-bottom: 5px;
+    flex-direction: row;
+    align-items: center;
+
+}  
+
 .Delete {
     background-color: rgb(247, 112, 112);
     border: none;
@@ -7,11 +15,18 @@
     font-size: 16px;
     width: 28px;
     height: 28px;
-    margin-left: 10px;
+   
+    
+   
     
     
 
 }
+
+.DivCheck{
+    margin-right: 10px;
+}
+
 .Uncheck {
     background-color: lightgrey;
     border: none;
@@ -20,9 +35,6 @@
     font-size: 18px;
     width: 28px;
     height: 28px;
-    
-    display: flex;
-    justify-content: flex-end; 
     
    
    
@@ -41,11 +53,7 @@
     
 
 }
-.DivItem{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
+
 
 .Action {
     font-size: 20px;

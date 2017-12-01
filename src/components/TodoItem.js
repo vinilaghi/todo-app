@@ -10,12 +10,12 @@ class TodoItem extends React.Component {
     const { deleteItem, action, id, done, toggleDone } = this.props;
     const check = (done) => {
       if (done === false) {
-        return <button className="Uncheck"><FaSquareO /></button>;
+        return <button className="uncheck"><FaSquareO /></button>;
 
 
       }
       else {
-        return <button className="Check"><FaCheckSquareO /></button>;
+        return <button className="check"><FaCheckSquareO /></button>;
 
       }
     }
@@ -30,11 +30,11 @@ class TodoItem extends React.Component {
     //   }
     // }
     return (
-      <div className="DivItem" >
+      <div className="divItem" >
 
-        <div className="DivCheck" onClick={x => toggleDone(id)}>{check(done)}</div>
-        <span className="Action" onClick={x => toggleDone(id)}> {action} </span>
-        <button className="Delete" onClick={x => deleteItem(id)}>
+        <div className="divCheck" onClick={x => toggleDone(id)}>{check(done)}</div>
+        <span className="action" onClick={x => toggleDone(id)}> {action} </span>
+        <button className="delete" onClick={x => deleteItem(id)}>
           <FaTrash />
         </button>
 

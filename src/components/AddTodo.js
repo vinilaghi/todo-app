@@ -27,10 +27,10 @@ class AddTodo extends React.Component {
       }}
       >
 
-        <button className="CheckAll" onClick={checkAll}>
+        <button className="checkAll" onClick={checkAll}>
           <FaAngleDown />
         </button>
-        <input className="Input" type="text" placeholder="What needs to be done?"
+        <input className="input" type="text" placeholder="What needs to be done?"
           ref={text => {
             this.input = text;
           }}

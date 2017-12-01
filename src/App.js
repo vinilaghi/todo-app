@@ -21,6 +21,7 @@ class App extends Component {
     console.log("item removed: ", key);
     this.setState({ todos: newTodo });
   };
+
   addItem = text => {
     if (text.trim() !== ""){
     let newList = [
@@ -30,6 +31,7 @@ class App extends Component {
     this.setState({ todos: newList });
   };
   };
+
   toggleDone = id => {
     let newTodo = this.state.todos.map(item => {
       if (item.id !== id) {
@@ -43,6 +45,35 @@ class App extends Component {
     });
     this.setState({ todos: newTodo });
   };
+
+  checkAll = () => {
+    let allChecked = true;
+    for (let i = 0; i < this.state.todos.length; i++) {
+      if (this.state.todos[i].done === false) {
+        allChecked = false;
+        break;
+      }
+    }
+
+    if (allChecked === false){
+    let newTodo = this.state.todos.map(item =>{
+      return {
+      ...item,
+      done : true
+    };
+  });
+    this.setState({ todos: newTodo });
+  }
+  else {
+    let newTodo = this.state.todos.map(item =>{
+      return {
+      ...item,
+      done : false
+    };
+  });
+    this.setState({ todos: newTodo });
+  }
+}
   render() {
     return (
       <div className="App">
@@ -51,8 +82,8 @@ class App extends Component {
           <h1 className="App-title">To do app!</h1>
         </header>
         <p className="App-intro">Let's get started!</p>
-        <AddTodo addItem={this.addItem} />
-        <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone} />
+        <AddTodo addItem={this.addItem} checkAll={this.checkAll}/>
+        <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone}  />
       </div>
     );
   }

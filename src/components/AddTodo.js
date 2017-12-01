@@ -16,6 +16,7 @@ class AddTodo extends React.Component {
   }
   render() {
     const addItem = this.props.addItem;
+    const checkAll = this.props.checkAll;
     return (
       <div style={{
         textAlign: "left",
@@ -26,7 +27,7 @@ class AddTodo extends React.Component {
       }}
       >
 
-        <button className="CheckAll" >
+        <button className="CheckAll" onClick={checkAll}>
           <FaAngleDown />
         </button>
         <input className="Input" type="text" placeholder="What needs to be done?"

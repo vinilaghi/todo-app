@@ -1,5 +1,5 @@
 import React from "react";
-import "./addTodo.css"
+import "./AddTodo.css"
 import FaAngleDown from 'react-icons/lib/fa/angle-down';
 
 

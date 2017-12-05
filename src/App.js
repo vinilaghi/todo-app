@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import AddTodo from "./components/AddTodo.js";
 import TodoList from "./components/TodoList.js";
+import Filter from "./components/Filter.js"
 
 let nextTodoId = 2;
 class App extends Component {
@@ -11,8 +12,9 @@ class App extends Component {
 
     this.state = {
       todos: [
-       
-      ]
+
+      ],
+      filter: "all"
     };
   }
 
@@ -23,13 +25,13 @@ class App extends Component {
   };
 
   addItem = text => {
-    if (text.trim() !== ""){
-    let newList = [
-      ...this.state.todos,
-      { action: text, id: nextTodoId++, done: false }
-    ];
-    this.setState({ todos: newList });
-  };
+    if (text.trim() !== "") {
+      let newList = [
+        ...this.state.todos,
+        { action: text, id: nextTodoId++, done: false }
+      ];
+      this.setState({ todos: newList });
+    };
   };
 
   toggleDone = id => {
@@ -37,11 +39,11 @@ class App extends Component {
       if (item.id !== id) {
         return item;
       }
-        return {
-          ...item,
-          done: !item.done
-        };
-      
+      return {
+        ...item,
+        done: !item.done
+      };
+
     });
     this.setState({ todos: newTodo });
   };
@@ -55,25 +57,30 @@ class App extends Component {
       }
     }
 
-    if (allChecked === false){
-    let newTodo = this.state.todos.map(item =>{
-      return {
-      ...item,
-      done : true
-    };
-  });
-    this.setState({ todos: newTodo });
+    if (allChecked === false) {
+      let newTodo = this.state.todos.map(item => {
+        return {
+          ...item,
+          done: true
+        };
+      });
+      this.setState({ todos: newTodo });
+    }
+    else {
+      let newTodo = this.state.todos.map(item => {
+        return {
+          ...item,
+          done: false
+        };
+      });
+      this.setState({ todos: newTodo });
+    }
   }
-  else {
-    let newTodo = this.state.todos.map(item =>{
-      return {
-      ...item,
-      done : false
-    };
-  });
-    this.setState({ todos: newTodo });
+
+  toggleFilter = state => {
+    this.setState ({filter: state});
   }
-}
+
   render() {
     return (
       <div className="App">
@@ -82,8 +89,9 @@ class App extends Component {
           <h1 className="App-title">To do app!</h1>
         </header>
         <p className="App-intro">Let's get started!</p>
-        <AddTodo addItem={this.addItem} checkAll={this.checkAll}/>
-        <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone}  />
+        <AddTodo addItem={this.addItem} checkAll={this.checkAll} />
+        <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone} filter={this.state.filter} />
+        {this.state.todos.length == 0 ? "" : <Filter filter={this.state.filter} toggleFilter={this.toggleFilter}/>}
       </div>
     );
   }

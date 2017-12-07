@@ -15,7 +15,7 @@ class App extends Component {
 
       ],
       filter: "all"
-    };
+    }
   }
 
   getFiltered = (todos, filter) => {
@@ -24,25 +24,23 @@ class App extends Component {
         return todos;
         break;
       case "completed":
-        return todos.filter(e=> {
-          return e.check==true
+        return todos.filter(e => {
+          return e.check == true
         });
         break;
-        case "active":
-        return todos.filter(e=> {
-          return e.check==false
+      case "active":
+        return todos.filter(e => {
+          return e.check == false
         });
     }
   }
-    ;
 
-  
 
   deleteItem = key => {
     let newTodo = this.state.todos.filter(item => item.id !== key);
     console.log("item removed: ", key);
     this.setState({ todos: newTodo });
-  };
+  }
 
   addItem = text => {
     if (text.trim() !== "") {
@@ -51,8 +49,8 @@ class App extends Component {
         { action: text, id: nextTodoId++, check: false }
       ];
       this.setState({ todos: newList });
-    };
-  };
+    }
+  }
 
   toggleCheck = id => {
     let newTodo = this.state.todos.map(item => {
@@ -62,11 +60,11 @@ class App extends Component {
       return {
         ...item,
         check: !item.check
-      };
+      }
 
     });
     this.setState({ todos: newTodo });
-  };
+  }
 
   checkAll = () => {
     let allChecked = true;
@@ -91,14 +89,19 @@ class App extends Component {
         return {
           ...item,
           check: false
-        };
+        }
       });
       this.setState({ todos: newTodo });
     }
   }
 
   toggleFilter = state => {
-    this.setState ({filter: state});
+    this.setState({ filter: state });
+  }
+
+  deleteAll = () => {
+    let newTodos = this.state.todos.filter(e => e.check === false)
+    this.setState({ todos: newTodos });
   }
 
   render() {
@@ -112,7 +115,7 @@ class App extends Component {
         <p className="App-intro">Let's get started!</p>
         <AddTodo addItem={this.addItem} checkAll={this.checkAll} />
         <TodoList todos={filtered} deleteItem={this.deleteItem} toggleCheck={this.toggleCheck} filter={this.state.filter} />
-        {this.state.todos.length == 0 ? "" : <Filter filter={this.state.filter} toggleFilter={this.toggleFilter}/>}
+        {this.state.todos.length == 0 ? "" : <Filter filter={this.state.filter} toggleFilter={this.toggleFilter} deleteAll={this.deleteAll} />}
       </div>
     );
   }

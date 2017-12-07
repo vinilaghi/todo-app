@@ -18,6 +18,26 @@ class App extends Component {
     };
   }
 
+  getFiltered = (todos, filter) => {
+    switch (filter) {
+      case "all":
+        return todos;
+        break;
+      case "completed":
+        return todos.filter(e=> {
+          return e.check==true
+        });
+        break;
+        case "active":
+        return todos.filter(e=> {
+          return e.check==false
+        });
+    }
+  }
+    ;
+
+  
+
   deleteItem = key => {
     let newTodo = this.state.todos.filter(item => item.id !== key);
     console.log("item removed: ", key);
@@ -28,20 +48,20 @@ class App extends Component {
     if (text.trim() !== "") {
       let newList = [
         ...this.state.todos,
-        { action: text, id: nextTodoId++, done: false }
+        { action: text, id: nextTodoId++, check: false }
       ];
       this.setState({ todos: newList });
     };
   };
 
-  toggleDone = id => {
+  toggleCheck = id => {
     let newTodo = this.state.todos.map(item => {
       if (item.id !== id) {
         return item;
       }
       return {
         ...item,
-        done: !item.done
+        check: !item.check
       };
 
     });
@@ -51,7 +71,7 @@ class App extends Component {
   checkAll = () => {
     let allChecked = true;
     for (let i = 0; i < this.state.todos.length; i++) {
-      if (this.state.todos[i].done === false) {
+      if (this.state.todos[i].check === false) {
         allChecked = false;
         break;
       }
@@ -61,7 +81,7 @@ class App extends Component {
       let newTodo = this.state.todos.map(item => {
         return {
           ...item,
-          done: true
+          check: true
         };
       });
       this.setState({ todos: newTodo });
@@ -70,7 +90,7 @@ class App extends Component {
       let newTodo = this.state.todos.map(item => {
         return {
           ...item,
-          done: false
+          check: false
         };
       });
       this.setState({ todos: newTodo });
@@ -82,6 +102,7 @@ class App extends Component {
   }
 
   render() {
+    const filtered = this.getFiltered(this.state.todos, this.state.filter);
     return (
       <div className="App">
         <header className="App-header">
@@ -90,7 +111,7 @@ class App extends Component {
         </header>
         <p className="App-intro">Let's get started!</p>
         <AddTodo addItem={this.addItem} checkAll={this.checkAll} />
-        <TodoList todos={this.state.todos} deleteItem={this.deleteItem} toggleDone={this.toggleDone} filter={this.state.filter} />
+        <TodoList todos={filtered} deleteItem={this.deleteItem} toggleCheck={this.toggleCheck} filter={this.state.filter} />
         {this.state.todos.length == 0 ? "" : <Filter filter={this.state.filter} toggleFilter={this.toggleFilter}/>}
       </div>
     );

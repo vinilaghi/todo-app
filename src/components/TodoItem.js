@@ -7,9 +7,9 @@ import "./TodoItem.css";
 class TodoItem extends React.Component {
 
   render() {
-    const { deleteItem, action, id, done, toggleDone } = this.props;
-    const check = (done) => {
-      if (done === false) {
+    const { deleteItem, action, id, check, toggleCheck } = this.props;
+    const checkButton = (check) => {
+      if (check === false) {
         return <button className="uncheck"><FaSquareO /></button>;
 
 
@@ -19,21 +19,12 @@ class TodoItem extends React.Component {
 
       }
     }
-    // const color = (done) => {
-    //   if (done === false) {
-    //     return ""
-    //     console.log(color);
-    //   }
-    //   else{
-    //     return ""
-    //     console.log(color);
-    //   }
-    // }
+  
     return (
       <div className="divItem" >
 
-        <div className="divCheck" onClick={x => toggleDone(id)}>{check(done)}</div>
-        <span className="action" onClick={x => toggleDone(id)}> {action} </span>
+        <div className="divCheck" onClick={x => toggleCheck(id)}>{checkButton(check)}</div>
+        <span className="action" onClick={x => toggleCheck(id)}> {action} </span>
         <button className="delete" onClick={x => deleteItem(id)}>
           <FaTrash />
         </button>

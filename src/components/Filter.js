@@ -9,13 +9,14 @@ class Filter extends React.Component {
     render() {
         const toggleFilter = this.props.toggleFilter;
         const deleteAll = this.props.deleteAll;
-        return (<div>
-             {this.props.filter == "all"? <span> All </span> : <span onClick={x => toggleFilter("all")}> all </span>}
-             {this.props.filter == "completed"? <span> Completed </span> : <span onClick={x => toggleFilter("completed")}> completed </span>}
-             {this.props.filter == "active"? <span> Active </span> : <span onClick={x => toggleFilter("active")}> active </span>}
-             
+        return (<div className="filter">
+             <div className="filterDiv">
+             <button className={this.props.filter === "all"? "filterActive" : "filterInactive"} onClick={x => toggleFilter("all")}> All </button>
+             <button className={this.props.filter === "active"? "filterActive" : "filterInactive"} onClick={x => toggleFilter("active")}> Active </button>
+             <button className={this.props.filter === "completed"? "filterActive" : "filterInactive"} onClick={x => toggleFilter("completed")}> Completed </button>
+             </div>
              <button className="deleteAll" onClick={x => deleteAll()}>
-          <FaTrash />
+          Clear completed
         </button>
         </div>
         );

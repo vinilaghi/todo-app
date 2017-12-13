@@ -15,19 +15,20 @@ class AddTodo extends React.Component {
     }
   }
   render() {
-    const addItem = this.props.addItem;
+    // const addItem = this.props.addItem;
     const checkAll = this.props.checkAll;
+    const allCheck = this.allCheck;
+    
+
+    
     return (
-      <div style={{
-        textAlign: "left",
-        maxWidth: 500,
-        width: "100%",
-        margin: "auto",
-        display: 'flex'
+      <div className="addDiv" style={{
+       
+        
       }}
       >
 
-        <button className="checkAll" onClick={checkAll}>
+        <button className={allCheck === true ? "checkAllActive" : "checkAll"} onClick={checkAll}>
           <FaAngleDown />
         </button>
         <input className="input" type="text" placeholder="What needs to be done?"

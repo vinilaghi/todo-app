@@ -1,32 +1,30 @@
 import React from "react";
 import FaTrash from "react-icons/lib/fa/trash";
-import FaSquareO from 'react-icons/lib/fa/square-o';
+import FaCheck from 'react-icons/lib/fa/check';
 import FaCheckSquareO from 'react-icons/lib/fa/check-square-o';
 import "./TodoItem.css";
 
 class TodoItem extends React.Component {
+  
 
   render() {
-    const { deleteItem, action, id, check, toggleCheck } = this.props;
-    const checkButton = (check) => {
-      if (check === false) {
-        return <button className="uncheck"><FaSquareO /></button>;
-
-
-      }
-      else {
-        return <button className="check"><FaCheckSquareO /></button>;
-
-      }
-    }
-  
+    const { deleteItem, action, id, check, toggleCheck} = this.props;
+    // let del = "";
+    // const mouseEnter = () => {
+    //   del = "X";
+    //   console.log(del)
+    // }
+    // const mouseLeave = () => {
+    //   del = "";
+    //   console.log(del)
+    // }
     return (
-      <div className="divItem" >
+      <div className="divItem">
 
-        <div className="divCheck" onClick={x => toggleCheck(id)}>{checkButton(check)}</div>
+        <div className="divCheck" onClick={x => toggleCheck(id)}><button className={check === true? "check" : "unCheck"}><FaCheck /></button></div>
         <span className="action" onClick={x => toggleCheck(id)}> {action} </span>
         <button className="delete" onClick={x => deleteItem(id)}>
-          <FaTrash />
+          X
         </button>
 
       </div>

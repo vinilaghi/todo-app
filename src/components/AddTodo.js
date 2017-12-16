@@ -16,8 +16,8 @@ class AddTodo extends React.Component {
   }
   render() {
     // const addItem = this.props.addItem;
-    const checkAll = this.props.checkAll;
-    const allCheck = this.allCheck;
+    const {checkAll, allChecked } = this.props;
+   
     
 
     
@@ -28,7 +28,7 @@ class AddTodo extends React.Component {
       }}
       >
 
-        <button className={allCheck === true ? "checkAllActive" : "checkAll"} onClick={checkAll}>
+        <button className={allChecked == true? "checkAllActive" : "checkAll"} onClick={checkAll}>
           <FaAngleDown />
         </button>
         <input className="input" type="text" placeholder="What needs to be done?"
@@ -52,3 +52,4 @@ class AddTodo extends React.Component {
 }
 
 export default AddTodo;
+//

@@ -36,19 +36,25 @@
     background-color: white;
     border-width: 1px;
     border-radius: 100%;
+    border: solid;
+    border-color: rgb(209, 209, 209);
     font-size: 18px;
     width: 28px;
     height: 28px;
     color: rgb(35, 189, 35);
+    outline: none;
 }
 .unCheck {
     background-color: white;
     border-width: 1px;
     border-radius: 100%;
+    border: solid;
+    border-color: rgb(209, 209, 209);
     font-size: 18px;
     width: 28px;
     height: 28px;
     color: white;
+    outline: none;
 }
 
 

@@ -14,7 +14,9 @@ class App extends Component {
       todos: [
 
       ],
-      filter: "all"
+      filter: "all",
+      allChecked: false,
+      checked: 0
     }
   }
 
@@ -22,16 +24,16 @@ class App extends Component {
     switch (filter) {
       case "all":
         return todos;
-        break;
       case "completed":
         return todos.filter(e => {
           return e.check === true
         });
-        break;
       case "active":
         return todos.filter(e => {
           return e.check === false
         });
+      default:
+        return "";
     }
   }
 
@@ -39,16 +41,25 @@ class App extends Component {
   deleteItem = key => {
     let newTodo = this.state.todos.filter(item => item.id !== key);
     console.log("item removed: ", key);
-    this.setState({ todos: newTodo });
+    let state = {
+      todos: newTodo,
+      allChecked: newTodo.every(x => x.check),
+      checked: this.countChecked(newTodo)
+    }
+
+    this.setState(state);
   }
 
   addItem = text => {
     if (text.trim() !== "") {
       let newList = [
         ...this.state.todos,
-        { action: text, id: nextTodoId++, check: false}
+        { action: text, id: nextTodoId++, check: false }
       ];
-      this.setState({ todos: newList });
+      this.setState({
+        todos: newList,
+        allChecked: false,
+      });
     }
   }
 
@@ -61,38 +72,44 @@ class App extends Component {
         ...item,
         check: !item.check
       }
-
     });
-    this.setState({ todos: newTodo });
+
+    let state = {
+      todos: newTodo,
+      allChecked: newTodo.every(x => x.check),
+      checked: this.countChecked(newTodo)
+    }
+
+    this.setState(state);
+    console.log(state);
   }
 
   checkAll = () => {
-    let allChecked = true;
-    for (let i = 0; i < this.state.todos.length; i++) {
-      if (this.state.todos[i].check === false) {
-        allChecked = false;
-        break;
-      }
-    }
 
-    if (allChecked === false) {
-      let newTodo = this.state.todos.map(item => {
+    let newTodo = null;
+    if (this.state.allChecked === false) {
+      newTodo = this.state.todos.map(item => {
         return {
           ...item,
           check: true
         };
       });
-      this.setState({ todos: newTodo });
     }
     else {
-      let newTodo = this.state.todos.map(item => {
+      newTodo = this.state.todos.map(item => {
         return {
           ...item,
           check: false
         }
       });
-      this.setState({ todos: newTodo });
     }
+
+    let state = {
+      todos: newTodo,
+      allChecked: newTodo.every(x => x.check),
+      checked: this.countChecked(newTodo)
+    }
+    this.setState(state);
   }
 
   toggleFilter = state => {
@@ -100,21 +117,21 @@ class App extends Component {
   }
 
   deleteAll = () => {
-    let newTodos = this.state.todos.filter(e => e.check === false)
-    this.setState({ todos: newTodos });
+    let newTodo = this.state.todos.filter(e => e.check === false)
+    let state = {
+      todos: newTodo,
+      allChecked: newTodo.every(x => x.check),
+      checked: this.countChecked(newTodo)
+    }
+
+    this.setState(state);
   }
 
-  allCheck = () => {
-    let allChecked = true;
-    for (let i = 0; i < this.state.todos.length; i++) {
-      if (this.state.todos[i].check === false) {
-        allChecked = false;
-        break;
-      }
+  countChecked = (todos) => {
+    let counted = todos.filter((e) => e.check === true);
+    return counted.length;
+
     }
-    console.log(allChecked);
-    return allChecked;
-  }
   
 
   render() {
@@ -126,10 +143,25 @@ class App extends Component {
           <h1 className="App-title">Things to do:</h1>
         </header>
         <div className="appContent">
-        <AddTodo addItem={this.addItem} checkAll={this.checkAll} allCheck={this.allCheck} />
-        <TodoList todos={filtered} deleteItem={this.deleteItem} toggleCheck={this.toggleCheck} filter={this.state.filter} />
-        {this.state.todos.length === 0 ? "" : <Filter filter={this.state.filter} toggleFilter={this.toggleFilter} deleteAll={this.deleteAll} />}
-      </div>
+          <AddTodo  
+          allChecked={this.state.allChecked} 
+          addItem={this.addItem} 
+          checkAll={this.checkAll} 
+          />
+          <TodoList 
+          todos={filtered} 
+          deleteItem={this.deleteItem} 
+          toggleCheck={this.toggleCheck} 
+          filter={this.state.filter} 
+          />
+          {this.state.todos.length === 0 ? "" : <Filter 
+          filter={this.state.filter} 
+          toggleFilter={this.toggleFilter} 
+          deleteAll={this.deleteAll}
+          checked={this.state.checked}
+          items={this.state.todos.length} 
+          />}
+        </div>
       </div>
     );
   }

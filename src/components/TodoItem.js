@@ -1,7 +1,5 @@
 import React from "react";
-import FaTrash from "react-icons/lib/fa/trash";
 import FaCheck from 'react-icons/lib/fa/check';
-import FaCheckSquareO from 'react-icons/lib/fa/check-square-o';
 import "./TodoItem.css";
 
 class TodoItem extends React.Component {

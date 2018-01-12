@@ -1,43 +1,30 @@
 import React from "react";
-import FaTrash from "react-icons/lib/fa/trash";
-import FaSquareO from 'react-icons/lib/fa/square-o';
-import FaCheckSquareO from 'react-icons/lib/fa/check-square-o';
-import "./todoItem.css";
+import FaCheck from 'react-icons/lib/fa/check';
+import "./TodoItem.css";
 
 class TodoItem extends React.Component {
- 
+  
+
   render() {
-    const { deleteItem, action, id, done, toggleDone } = this.props;
-    const check = (done) => {
-        if (done === false) {
-            return <button className="Uncheck"><FaSquareO /></button>;
-           
-            
-                    }
-                    else { 
-                        return <button className="Check"><FaCheckSquareO /></button>;
-                        
-                    }
-                }
-                // const color = (done) => {
-                //   if (done === false) {
-                //     return ""
-                //     console.log(color);
-                //   }
-                //   else{
-                //     return ""
-                //     console.log(color);
-                //   }
-                // }
+    const { deleteItem, action, id, check, toggleCheck} = this.props;
+    // let del = "";
+    // const mouseEnter = () => {
+    //   del = "X";
+    //   console.log(del)
+    // }
+    // const mouseLeave = () => {
+    //   del = "";
+    //   console.log(del)
+    // }
     return (
-      <div style={{ display: "flex", marginBottom: "5px"}}>
-        
-        <span className="Action" onClick={x => toggleDone(id)}> {action} </span>
-      <div className="DivItem" onClick={x => toggleDone(id)}>{check(done)}</div>
-      <button className="Delete" onClick={x => deleteItem(id)}>
-          <FaTrash />
+      <div className="divItem">
+
+        <div className="divCheck" onClick={x => toggleCheck(id)}><button className={check === true? "check" : "unCheck"}><FaCheck /></button></div>
+        <span className="action" onClick={x => toggleCheck(id)}> {action} </span>
+        <button className="delete" onClick={x => deleteItem(id)}>
+          X
         </button>
-        
+
       </div>
     );
   }

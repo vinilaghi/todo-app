@@ -1,0 +1,55 @@
+.filter {
+    background-color: white;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.remaining{
+    margin: 8px 5px 5px 8px;
+    color: rgb(102, 102, 102);
+    grid-column: 1 / 2;
+    justify-self: start;
+}
+.deleteAll {
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 3px;
+    margin-right: 5px;
+    grid-column: 3 / 4;
+    justify-self: end;
+    color: rgb(102, 102, 102)    
+}
+.filterDiv {
+    grid-column: 2 / 3;
+    justify-self: center;
+
+}
+.filterInactive {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color: rgb(102, 102, 102);
+    padding: 3px 5px;
+    outline: none;
+    margin: 5px 5px 5px 5px;
+   
+}
+.filterActive {
+    background-color: white;
+    border-radius: 4px;
+    border-width: 1px;
+    color: rgb(102, 102, 102);
+    border: solid;
+    border-color: rgb(209, 209, 209);
+    padding: 3px 5px;
+    outline: none;
+    margin: 5px 5px 5px 5px;
+    
+}

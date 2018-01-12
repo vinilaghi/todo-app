@@ -1,58 +1,70 @@
-.Delete {
-    background-color: rgb(247, 112, 112);
+  .divItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-end;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-style: solid;
+    border-color: rgb(209, 209, 209);
+    border-bottom-width: 0.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+} 
+
+
+.delete {
+    background-color: white;
     border: none;
     border-radius: 4px;
-    color: white;
+    color: rgba(238, 94, 94, 0.719);
     text-align: center;
     font-size: 16px;
     width: 28px;
     height: 28px;
-    margin-left: 10px;
-    
-    
-
+    outline: none;
 }
-.Uncheck {
-    background-color: lightgrey;
-    border: none;
-    border-radius: 4px;
-    color: white;
+
+
+
+.divCheck{
+    margin-right: 10px;
+}
+
+.check {
+    background-color: white;
+    border-width: 1px;
+    border-radius: 100%;
+    border: solid;
+    border-color: rgb(209, 209, 209);
     font-size: 18px;
     width: 28px;
     height: 28px;
-    
-    display: flex;
-    justify-content: flex-end; 
-    
-   
-   
-
+    color: rgb(35, 189, 35);
+    outline: none;
 }
-.Check {
-    background-color: lightgreen;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    text-align: center;
-    font-size: 16px;
+.unCheck {
+    background-color: white;
+    border-width: 1px;
+    border-radius: 100%;
+    border: solid;
+    border-color: rgb(209, 209, 209);
+    font-size: 18px;
     width: 28px;
     height: 28px;
-    
-    
-
-}
-.DivItem{
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    color: white;
+    outline: none;
 }
 
-.Action {
+
+.action {
     font-size: 20px;
     text-align: left;
     white-space: normal;
-    max-width: 400px;
-    width: 80%;
+    overflow: auto;
+    padding-right: 10px;
+    flex: 1;
     display: block;
     word-wrap: break-word;
 }

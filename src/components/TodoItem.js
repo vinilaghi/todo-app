@@ -7,15 +7,6 @@ class TodoItem extends React.Component {
 
   render() {
     const { deleteItem, action, id, check, toggleCheck} = this.props;
-    // let del = "";
-    // const mouseEnter = () => {
-    //   del = "X";
-    //   console.log(del)
-    // }
-    // const mouseLeave = () => {
-    //   del = "";
-    //   console.log(del)
-    // }
     return (
       <div className="divItem">
 

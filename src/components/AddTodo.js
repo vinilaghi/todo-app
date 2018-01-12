@@ -2,10 +2,10 @@ import React from "react";
 import "./AddTodo.css"
 import FaAngleDown from 'react-icons/lib/fa/angle-down';
 
-
+const ENTER_KEY = 13;
 class AddTodo extends React.Component {
   handleKeyPress(target) {
-    if (target.charCode === 13) {
+    if (target.charCode === ENTER_KEY) {
 
       if (this.input.value.trim() !== "") {
         this.props.addItem(this.input.value);
@@ -15,7 +15,6 @@ class AddTodo extends React.Component {
     }
   }
   render() {
-    // const addItem = this.props.addItem;
     const {checkAll, allChecked } = this.props;
    
     
@@ -28,7 +27,7 @@ class AddTodo extends React.Component {
       }}
       >
 
-        <button className={allChecked == true? "checkAllActive" : "checkAll"} onClick={checkAll}>
+        <button className={allChecked === true? "checkAllActive" : "checkAll"} onClick={checkAll}>
           <FaAngleDown />
         </button>
         <input className="input" type="text" placeholder="What needs to be done?"
@@ -37,14 +36,6 @@ class AddTodo extends React.Component {
           }}
           onKeyPress={target => this.handleKeyPress(target)}
         />
-        {/* <button className="Button"
-          onClick={() => {
-            addItem(this.input.value);
-            this.input.value = "";
-          }}
-        >
-          <b>Add</b>
-        </button> */}
 
       </div>
     );
